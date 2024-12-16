@@ -46,7 +46,9 @@ app.engine('ejs', ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(methodOverride("_method"));
+
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "/public")));
@@ -99,18 +101,7 @@ app.use((req,res,next)=>{
   next();
 });
 
-
-
-// demo user
-// app.get("/register",async(req,res)=>{
-//   let fakeUser = new User({
-//     email: "aditya@gmail.com",
-//     username: "aditya886",
-//   })
-//   let result = await User.register(fakeUser,"aditya009");
-//   res.send(result)
-// })
-
+ 
 
 
   
@@ -132,26 +123,7 @@ app.use("/", usersRouter);
 
  
 
-
-// test listing model
-
-// app.get("/test",async (req,res)=>{
-//     let simpleListing = new Listing({
-//      title: "the world",
-//      description: " noghint",
-//      price: 25555,
-//      location: "hajipur",
-//      country: "india",
-//    });
-//    await simpleListing.save().then((res)=>{
-//     console.log(res);
-//    }).catch((err)=>{
-//     console.log(err);
-//    })
-//    console.log("sample is saved");
-//    res.send("successful")
-// })
-
+ 
 // does't exit route
 
 app.all("*",(req,res,next)=>{
